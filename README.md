@@ -1,5 +1,5 @@
 # Uconsole-i3
-i3 window manager configuration for Uconsole device 
+i3 window manager configuration for Uconsole device (Raspberry Pi OS Trixie) 
 
 ![SCREENSHOT|300](./screen.png)
 ![SCREENSHOT2|300](./screen2.png)
@@ -21,23 +21,26 @@ chmod +x install.sh
 ./install.sh
 ```
 
-## Manual Installation 
+## Manual Installation
 
-This configuration uses I3-GAPS [https://github.com/Airblader/i3](https://github.com/Airblader/i3)
+This configuration uses i3 (official version from [https://i3wm.org](https://i3wm.org) and [GitHub](https://github.com/i3/i3)).
 
-### Installation i3 gaps:
+### Installation i3 from Debian repos (Trixie):
 ```bash
-sudo apt install dh-autoreconf libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libxcb-icccm4-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-shape0 libxcb-shape0-dev meson ninja-build
+sudo apt install i3-wm i3blocks i3status rofi
+```
 
- cd ~/Documents
- # clone the repository
- git clone https://www.github.com/Airblader/i3 i3-gaps
- cd i3-gaps
+### Installation i3 from source (if not available in repos):
+```bash
+sudo apt install dh-autoreconf libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb1-dev libxcb-icccm4-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-shape0 libxcb-shape0-dev meson ninja-build
 
- # compile
- mkdir -p build && cd build
- meson ..
- sudo ninja
+cd ~/Documents
+git clone https://github.com/i3/i3
+cd i3
+
+mkdir -p build && cd build
+meson ..
+sudo ninja install
 ```
 
 ### Configure LXDE for i3
@@ -181,7 +184,7 @@ After pressing `$mod + r`, use:
 
 ## Features
 
-- **i3-gaps**: Window gaps for modern look
+- **i3**: Official i3 window manager (replaces deprecated i3-gaps)
 - **Rofi**: Application launcher
 - **Suckless Terminal (st)**: Minimal terminal emulator
 - **i3blocks**: Status bar with custom scripts
